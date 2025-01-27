@@ -5,7 +5,7 @@ WORKDIR /usr/assignment/src
 COPY package*json .
 COPY pnpm-lock.yaml .
 
-RUN npm install -g pnpm && pnpm install
+RUN npm install -g pnpm && pnpm install --frozen-lockfile
 
 COPY . .
 
