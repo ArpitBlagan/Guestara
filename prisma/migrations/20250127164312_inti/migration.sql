@@ -1,0 +1,9 @@
+-- AlterTable
+ALTER TABLE "Category" ALTER COLUMN "tax" DROP NOT NULL,
+ALTER COLUMN "taxType" DROP NOT NULL;
+
+-- AlterTable
+ALTER TABLE "Item" ALTER COLUMN "tax" DROP NOT NULL;
+
+-- AlterTable
+ALTER TABLE "Subcategory" ALTER COLUMN "tax" DROP NOT NULL;
