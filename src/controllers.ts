@@ -147,11 +147,65 @@ export const createItem = async (req: Request, res: Response) => {
   }
 };
 
-export const updateCategory = async (req: Request, res: Response) => {};
+export const updateCategory = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  if (!id) {
+    res.json({
+      message: "We need category id to for updating its data :(",
+      status: 400,
+    });
+    return;
+  }
+  try {
+    await prisma.category.update({
+      where: { id },
+      data: { ...req.body },
+    });
+  } catch (err) {
+    console.log(err);
+    res.json({ message: "Internal server error :(", status: 500 });
+  }
+};
 
-export const updateSubCategory = async (req: Request, res: Response) => {};
+export const updateSubCategory = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  if (!id) {
+    res.json({
+      message: "We need sub-category id to for updating its data :(",
+      status: 400,
+    });
+    return;
+  }
+  try {
+    await prisma.subcategory.update({
+      where: { id },
+      data: { ...req.body },
+    });
+  } catch (err) {
+    console.log(err);
+    res.json({ message: "Internal server error :(", status: 500 });
+  }
+};
 
-export const updateItem = async (req: Request, res: Response) => {};
+export const updateItem = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  if (!id) {
+    res.json({
+      message: "We need item id to for updating its data :(",
+      status: 400,
+    });
+    return;
+  }
+  try {
+    await prisma.item.update({
+      where: { id },
+      data: { ...req.body },
+    });
+  } catch (err) {
+    console.log(err);
+    res.json({ message: "Internal server error :(", status: 500 });
+  }
+};
 
 export const searchItem = async (req: Request, res: Response) => {
   const { name } = req.params;
